@@ -31,27 +31,27 @@ kfold = StratifiedKFold(n_splits=10)
 
 ######################### Random forest model ##########################
 # RFC Parameters tunning 
-# RFC = RandomForestClassifier()
+RFC = RandomForestClassifier()
 
-# # Search grid for optimal parameters
-# rf_param_grid = {"max_depth": [None],
-#               "max_features": [1, 3, 10],
-#               "min_samples_split": [2, 4, 10, 12, 16],
-#               "min_samples_leaf": [1, 3, 10],
-#               "bootstrap": [False],
-#               "n_estimators" :[50, 100, 400, 700, 1000],
-#               "criterion": ["gini", 'entropy']}
+# Search grid for optimal parameters
+rf_param_grid = {"max_depth": [None],
+              "max_features": [1, 3, 10],
+              "min_samples_split": [2, 4, 10, 12, 16],
+              "min_samples_leaf": [1, 3, 10],
+              "bootstrap": [False],
+              "n_estimators" :[50, 100, 400, 700, 1000],
+              "criterion": ["gini", 'entropy']}
 
 
-# gsRFC = GridSearchCV(estimator = RFC, param_grid = rf_param_grid, cv = kfold, 
-#                       scoring = "accuracy", n_jobs = 4, verbose = 1)
+gsRFC = GridSearchCV(estimator = RFC, param_grid = rf_param_grid, cv = kfold, 
+                      scoring = "accuracy", n_jobs = 4, verbose = 1)
 
-# gsRFC.fit(train, train_y)
+gsRFC.fit(train, train_y)
 
-# RFC_best = gsRFC.best_estimator_
+RFC_best = gsRFC.best_estimator_
 
-# # Best score
-# rfc_best_score = gsRFC.best_score_
+# Best score
+rfc_best_score = gsRFC.best_score_
 
 
 ######################### Gradient Boosting model ##########################
